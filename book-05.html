@@ -24,31 +24,6 @@
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            position: relative; /* 确保定位参考正确 */
-        }
-
-        /* 返回按钮样式微调：适配该页面的设计色调 */
-        .back-home {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 9999;
-            background: rgba(15, 23, 42, 0.8); /* 适配深蓝背景 */
-            color: #FFFFFF;
-            padding: 8px 16px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            border: 1px solid var(--accent); /* 使用红边框呼应主题 */
-            backdrop-filter: blur(8px);
-            transition: all 0.3s ease;
-        }
-
-        .back-home:hover {
-            background: var(--accent);
-            color: white;
-            box-shadow: 0 0 15px rgba(255, 36, 66, 0.4);
         }
 
         .canvas {
@@ -128,13 +103,14 @@
             text-transform: uppercase;
         }
 
+        /* 书名：取消省略号，确保完整显示 */
         .title {
-            font-size: 0.9vw;
+            font-size: 0.9vw; /* 略微缩小以容纳长标题 */
             font-weight: 800;
             line-height: 1.2;
             margin-bottom: 5px;
             color: var(--text-main);
-            word-wrap: break-word;
+            word-wrap: break-word; /* 允许折行 */
         }
 
         .desc {
@@ -160,8 +136,6 @@
 </head>
 <body>
 
-<a href="index.html" class="back-home">← 返回首页</a>
-
 <div class="canvas">
     <div class="header">
         <h1>THE <span>A16Z</span> READING CANON</h1>
@@ -174,7 +148,131 @@
             <div class="title">The Wide Wide Sea</div>
             <div class="desc">深度复盘库克船长的最后航行。揭示极端环境下团队决策与权力结构的脆弱性，是理解不确定性风险的佳作。</div>
         </div>
+        <div class="cell">
+            <div class="cell-head"><span class="id">02</span><span class="author">Andrew Roberts</span></div>
+            <div class="title">Napoleon: A Life</div>
+            <div class="desc">拿破仑不仅是战术天才，更是制度设计的大师。本书重构其从辉煌到覆灭的战略逻辑，反思扩张的边界。</div>
         </div>
+        <div class="cell">
+            <div class="cell-head"><span class="id">03</span><span class="author">Sam Walton</span></div>
+            <div class="title">Sam Walton: Made in America</div>
+            <div class="desc">沃尔玛创始人亲述零售帝国的底层逻辑。强调对效率的极致追求和反传统的创新勇气，是商业运营的圣经。</div>
+        </div>
+        <div class="cell">
+            <div class="cell-head"><span class="id">04</span><span class="author">Viktor E. Frankl</span></div>
+            <div class="title">Man's Search for Meaning</div>
+            <div class="desc">在苦难中找寻生命的终极意义。帮助创业者在穿越生死存亡的至暗时刻时，保持坚韧的心理护城河。</div>
+        </div>
+        <div class="cell">
+            <div class="cell-head"><span class="id">05</span><span class="author">Jim Collins</span></div>
+            <div class="title">Good to Great</div>
+            <div class="desc">揭秘平庸公司跨越至伟大的基因密码。通过严谨数据分析提出“先人后事”与“刺猬策略”，重塑企业长期价值。</div>
+        </div>
+
+        <div class="cell">
+            <div class="cell-head"><span class="id">06</span><span class="author">Geoffrey A. Moore</span></div>
+            <div class="title">Crossing the Chasm</div>
+            <div class="desc">科技营销的终极指南。解析新产品如何跨越早期采用者与主流市场间的鸿沟，是硅谷产品增长的必读教科书。</div>
+        </div>
+        <div class="cell">
+            <div class="cell-head"><span class="id">07</span><span class="author">Bill Walsh</span></div>
+            <div class="title">The Score Takes Care of Itself</div>
+            <div class="desc">通过顶级橄榄球教练视角论述高绩效体系。强调只要建立完美的执行标准和文化，胜利（得分）自然会随之而来。</div>
+        </div>
+        <div class="cell">
+            <div class="cell-head"><span class="id">08</span><span class="author">David McCullough</span></div>
+            <div class="title">The Wright Brothers</div>
+            <div class="desc">还原莱特兄弟发明飞机的非线性过程。展示了纯粹的工程直觉与面对质疑时的偏执，深刻理解创新的本质。</div>
+        </div>
+        <div class="cell">
+            <div class="cell-head"><span class="id">09</span><span class="author">M. Ramanujam</span></div>
+            <div class="title">Monetizing Innovation</div>
+            <div class="desc">彻底重构产品商业化逻辑。主张将“定价”前置于产品研发，教你如何做出真正让客户愿意付钱的高价值产品。</div>
+        </div>
+        <div class="cell">
+            <div class="cell-head"><span class="id">10</span><span class="author">Geoff Smart</span></div>
+            <div class="title">Who: The A Method for Hiring</div>
+            <div class="desc">针对人才选拔的结构化实战手册。Databricks 等独角兽推崇的 A 级人才筛选法，旨在解决创业中最核心的人才痛点。</div>
+        </div>
+
+        <div class="cell">
+            <div class="cell-head"><span class="id">11</span><span class="author">Peter F. Drucker</span></div>
+            <div class="title">The Effective Executive</div>
+            <div class="desc">德鲁克管理哲学的核心：管理者必须通过卓有成效的产出证明价值。重点在于时间管理、贡献定位与正确的决策顺序。</div>
+        </div>
+        <div class="cell">
+            <div class="cell-head"><span class="id">12</span><span class="author">Clayton Christensen</span></div>
+            <div class="title">The Innovator's Solution</div>
+            <div class="desc">如何利用破坏性创新在成熟市场中突围。提供了破解“创新者窘境”的具体路径，是构建企业持续增长曲线的指南。</div>
+        </div>
+        <div class="cell">
+            <div class="cell-head"><span class="id">13</span><span class="author">Clayton Christensen</span></div>
+            <div class="title">Competing Against Luck</div>
+            <div class="desc">提出著名的 JTBD（待办任务）理论。从本质上解析用户为什么“雇用”你的产品，从而将创新从博彩变为科学。</div>
+        </div>
+        <div class="cell">
+            <div class="cell-head"><span class="id">14</span><span class="author">Chip & Dan Heath</span></div>
+            <div class="title">Decisive</div>
+            <div class="desc">解析决策中的认知偏差。通过“WRAP”决策法帮助创业者绕过心理陷阱，在复杂环境中做出更明智的选择。</div>
+        </div>
+        <div class="cell">
+            <div class="cell-head"><span class="id">15</span><span class="author">Benoit Mandelbrot</span></div>
+            <div class="title">The Misbehavior of Markets</div>
+            <div class="desc">数学视角下的金融市场分形与风险波动。通过非线性数学揭示市场的真实波动，提醒投资者警惕传统统计学掩盖的极端风险。</div>
+        </div>
+
+        <div class="cell">
+            <div class="cell-head"><span class="id">16</span><span class="author">Junichiro Tanizaki</span></div>
+            <div class="title">In Praise of Shadows</div>
+            <div class="desc">东方美学的哲学深度思考。在高度数字化的时代，这种关于光影、含蓄与感官体验的沉思能极大提升产品品味。</div>
+        </div>
+        <div class="cell">
+            <div class="cell-head"><span class="id">17</span><span class="author">Eric Berger</span></div>
+            <div class="title">Liftoff</div>
+            <div class="desc">SpaceX 成立初期的草根奋斗史。真实记录了马斯克如何带领团队在生死边缘通过工程极致化改写航天历史。</div>
+        </div>
+        <div class="cell">
+            <div class="cell-head"><span class="id">18</span><span class="author">Eric Berger</span></div>
+            <div class="title">Reentry</div>
+            <div class="desc">SpaceX 故事的下半场。探讨了大规模创新后的持续扩张挑战，以及如何通过可回收火箭技术彻底颠覆全球工业格局。</div>
+        </div>
+        <div class="cell">
+            <div class="cell-head"><span class="id">19</span><span class="author">Lee Iacocca</span></div>
+            <div class="title">Iacocca: An Autobiography</div>
+            <div class="desc">底特律传奇的商业自传。记录了福特到克莱斯勒的权力斗争与逆袭，是研究危机公关与卓越领导力的必读书。</div>
+        </div>
+        <div class="cell">
+            <div class="cell-head"><span class="id">20</span><span class="author">Alfred Lansing</span></div>
+            <div class="title">Endurance</div>
+            <div class="desc">南极探险史上的领导力神作。沙克尔顿在绝境中带回全体队员的传奇，定义了何为真正的责任感与意志力。</div>
+        </div>
+
+        <div class="cell">
+            <div class="cell-head"><span class="id">21</span><span class="author">Thomas Sowell</span></div>
+            <div class="title">Intellectuals and Society</div>
+            <div class="desc">冷静剖析知识分子阶层对社会运作的影响。探讨了观念如何被塑造，以及理性主义可能带来的系统性误导。</div>
+        </div>
+        <div class="cell">
+            <div class="cell-head"><span class="id">22</span><span class="author">Lulu Miller</span></div>
+            <div class="title">Why Fish Don't Exist</div>
+            <div class="desc">一场关于分类、秩序与混乱的哲学探险。提醒我们世界远比人类定义的标签更复杂，要对未知保持终极开放。</div>
+        </div>
+        <div class="cell">
+            <div class="cell-head"><span class="id">23</span><span class="author">Thomas Mann</span></div>
+            <div class="title">The Magic Mountain</div>
+            <div class="desc">西方文明的思想熔炉。通过肺结核疗养院的缩影，探讨了时间、政治与人性，是拓宽思想深度的精神磨刀石。</div>
+        </div>
+        <div class="cell">
+            <div class="cell-head"><span class="id">24</span><span class="author">Elias Canetti</span></div>
+            <div class="title">Crowds and Power</div>
+            <div class="desc">关于群众心理与权力运作的深度洞察。解析了人类聚集成群的本能逻辑，是理解现代社交媒体与政治风口的基石。</div>
+        </div>
+        <div class="cell">
+            <div class="cell-head"><span class="id">25</span><span class="author">Mitchel Resnick</span></div>
+            <div class="title">Lifelong Kindergarten</div>
+            <div class="desc">MIT媒体实验室的创意法则。主张通过玩耍、同伴、热情与项目四个维度，在成年人的世界找回终身创造力。</div>
+        </div>
+    </div>
 
     <div class="footer">
         <div>DESIGNED BY TOP TYPOGRAPHER / 16:9 SCREEN OPTIMIZED</div>
