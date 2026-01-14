@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>私人藏书阁 | Private Library</title>
+    <style>
+        :root { --bg: #0a0a0a; --text: #e0e0e0; --muted: #888; --gold: #b89a63; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg); color: var(--text); font-family: serif; min-height: 100vh; }
+        header { max-width: 1000px; margin: 60px auto; text-align: center; padding: 0 20px; }
+        h1 { font-size: 2.5rem; letter-spacing: 4px; margin-bottom: 10px; font-weight: 400; }
+        .nav-bar { position: sticky; top: 0; background: rgba(10,10,10,0.9); backdrop-filter: blur(10px); padding: 15px; z-index: 100; border-bottom: 1px solid #222; }
+        .nav-inner { max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; align-items: center; }
+        #searchInput { width: 100%; max-width: 300px; background: #1a1a1a; border: 1px solid #333; padding: 8px 15px; color: white; border-radius: 4px; outline: none; }
+        .tag-btn { background: none; border: 1px solid #333; color: var(--muted); padding: 5px 12px; margin: 0 4px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; }
+        .tag-btn.active { background: var(--gold); color: black; border-color: var(--gold); }
+        .grid { max-width: 1000px; margin: 40px auto; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 30px; }
+        .card { background: #121212; border: 1px solid #222; border-radius: 8px; padding: 25px; text-decoration: none; color: inherit; transition: 0.3s; height: 200px; display: flex; flex-direction: column; }
+        .card:hover { border-color: var(--gold); transform: translateY(-5px); background: #161616; }
+        .icon { font-size: 2rem; margin-bottom: 15px; }
+        .title { font-size: 1.1rem; margin-bottom: 8px; font-weight: 500; }
+        .cat { font-size: 0.7rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; }
+    </style>
+</head>
+<body>
+    <header><h1>私人藏书阁</h1><p id="stats" style="color:var(--muted); font-size:0.9rem;"></p></header>
+    <div class="nav-bar"><div class="nav-inner">
+        <input type="text" id="searchInput" placeholder="搜索书单..." oninput="render()">
+        <div id="tags"></div>
+    </div></div>
+    <main class="grid" id="shelf"></main>
+    <script src="data.js"></script>
+    <script>
+        let currentCat = '全部';
+        function init() {
+            const cats = ['全部', ...new Set(BOOK_DATA.map(b => b.category))];
+            document.getElementById('tags').innerHTML = cats.map(c => `<button class="tag-btn ${c==='全部'?'active':''}" onclick="filter('${c}', this)">${c}</button>`).join('');
+            render();
+        }
+        function filter(c, btn) {
+            currentCat = c;
+            document.querySelectorAll('.tag-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            render();
+        }
+        function render() {
+            const key = document.getElementById('searchInput').value.toLowerCase();
+            const res = BOOK_DATA.filter(b => (currentCat === '全部' || b.category === currentCat) && b.title.toLowerCase().includes(key));
+            document.getElementById('shelf').innerHTML = res.map(b => `<a href="${b.link}" class="card"><div class="icon">${b.icon}</div><div class="cat">${b.category}</div><div class="title">${b.title}</div><div style="margin-top:auto; font-size:0.8rem; color:var(--gold)">阅读 →</div></a>`).join('');
+            document.getElementById('stats').innerText = `共 ${BOOK_DATA.length} 份 / 当前显示 ${res.length} 份`;
+        }
+        window.onload = init;
+    </script>
+</body>
+</html>
